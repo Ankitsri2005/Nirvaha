@@ -110,10 +110,10 @@ export default function App() {
   }
 
   const revealKpi = useScrollReveal()
-  const revealShipment = useScrollReveal({ rootMargin: '0px 0px -60px 0px' })
-  const revealCharts = useScrollReveal({ rootMargin: '0px 0px -60px 0px' })
-  const revealAlerts = useScrollReveal({ rootMargin: '0px 0px -50px 0px' })
-  const revealBatches = useScrollReveal({ rootMargin: '0px 0px -50px 0px' })
+  const revealShipment = useScrollReveal()
+  const revealCharts = useScrollReveal()
+  const revealAlerts = useScrollReveal()
+  const revealBatches = useScrollReveal()
 
   if (!session) {
     return <LoginScreen onLogin={handleLogin} />

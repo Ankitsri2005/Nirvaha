@@ -340,6 +340,13 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-zoom {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* Leaflet Container styling for crisp light theme */
