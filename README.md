@@ -4,7 +4,7 @@
 
 ## 🔗 Live Demo
 
-**[https://foodtrace-demo.vercel.app](https://foodtrace-demo.vercel.app)** *(replace with your deployed URL)*
+**[https://foodtrace-demo.vercel.app](https://foodtrace-demo.vercel.app)]** 
 
 Sign in with any of these — all use the password `demo1234`:
 
