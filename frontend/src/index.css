@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    background-color: #F8FAFC; /* Clean Crisp Slate-50 */
+    color: #0F172A; /* Slate-900 */
+    font-feature-settings: 'cv02', 'cv03', 'cv04';
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+  }
+
+  ::selection {
+    background: rgba(16, 185, 129, 0.2);
+    color: #065F46;
+  }
+
+  /* every control eases between states so nothing snaps */
+  button,
+  a,
+  [role='button'] {
+    transition:
+      transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      box-shadow 0.25s ease,
+      opacity 0.2s ease,
+      filter 0.2s ease;
+  }
+
+  input,
+  select,
+  textarea {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+    color: #1E293B;
+    outline: none;
+    transition: all 0.15s ease-in-out;
+  }
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #10B981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  }
+  select option {
+    background: #FFFFFF;
+    color: #1E293B;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   MOTION SYSTEM
+   Small, reusable entrance/ambient animations. Every class takes an optional
+   `--d` delay so lists can stagger with a single inline style.
+   ───────────────────────────────────────────────────────────────────────── */
+@keyframes fx-fade-up {
+  from { opacity: 0; transform: translate3d(0, 14px, 0) }
+  to   { opacity: 1; transform: none }
+}
+@keyframes fx-fade-down {
+  from { opacity: 0; transform: translate3d(0, -12px, 0) }
+  to   { opacity: 1; transform: none }
+}
+@keyframes fx-fade-in {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+@keyframes fx-pop {
+  0%   { opacity: 0; transform: scale(0.92) }
+  60%  { transform: scale(1.02) }
+  100% { opacity: 1; transform: scale(1) }
+}
+@keyframes fx-slide-left {
+  from { opacity: 0; transform: translate3d(-18px, 0, 0) }
+  to   { opacity: 1; transform: none }
+}
+@keyframes fx-slide-right {
+  from { opacity: 0; transform: translate3d(18px, 0, 0) }
+  to   { opacity: 1; transform: none }
+}
+@keyframes fx-zoom-in {
+  from { opacity: 0; transform: scale(0.96) }
+  to   { opacity: 1; transform: none }
+}
+@keyframes fx-shimmer {
+  0%   { background-position: -160% 0 }
+  100% { background-position: 260% 0 }
+}
+@keyframes fx-float {
+  0%, 100% { transform: translateY(0) }
+  50%      { transform: translateY(-5px) }
+}
+@keyframes fx-pulse-ring {
+  0%   { transform: scale(0.7); opacity: 0.55 }
+  70%  { opacity: 0 }
+  100% { transform: scale(2.2); opacity: 0 }
+}
+@keyframes fx-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1) }
+  50%      { opacity: 0.3; transform: scale(0.75) }
+}
+@keyframes fx-spin {
+  to { transform: rotate(360deg) }
+}
+@keyframes fx-blink {
+  0%, 100% { opacity: 1 }
+  50%      { opacity: 0.35 }
+}
+@keyframes fx-draw {
+  from { stroke-dashoffset: var(--dash, 300) }
+  to   { stroke-dashoffset: 0 }
+}
+@keyframes fx-draw-path {
+  from { stroke-dashoffset: 1 }
+  to   { stroke-dashoffset: 0 }
+}
+@keyframes fx-fade-svg {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+@keyframes fx-grow-x {
+  from { transform: scaleX(0) }
+  to   { transform: scaleX(1) }
+}
+@keyframes fx-drop {
+  0%   { transform: translateY(-6px); opacity: 0 }
+  100% { transform: translateY(0); opacity: 1 }
+}
+@keyframes fx-bounce-in {
+  0%   { opacity: 0; transform: translateY(10px) scale(0.97) }
+  55%  { transform: translateY(-2px) scale(1.005) }
+  100% { opacity: 1; transform: translateY(0) scale(1) }
+}
+@keyframes fx-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0) }
+  50%      { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.16) }
+}
+@keyframes fx-shake {
+  0%, 100% { transform: translateX(0) }
+  20%      { transform: translateX(-4px) }
+  40%      { transform: translateX(4px) }
+  60%      { transform: translateX(-2px) }
+  80%      { transform: translateX(2px) }
+}
+
+@layer components {
+  /* ── entrances ─────────────────────────────────────────────────────── */
+  .anim-fade-up    { animation: fx-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: var(--d, 0ms) }
+  .anim-fade-down  { animation: fx-fade-down 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: var(--d, 0ms) }
+  .anim-fade-in    { animation: fx-fade-in 0.4s ease both; animation-delay: var(--d, 0ms) }
+  .anim-pop        { animation: fx-pop 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: var(--d, 0ms) }
+  .anim-slide-left { animation: fx-slide-left 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: var(--d, 0ms) }
+  .anim-slide-right{ animation: fx-slide-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: var(--d, 0ms) }
+  .anim-zoom-in    { animation: fx-zoom-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: var(--d, 0ms) }
+  .anim-bounce-in  { animation: fx-bounce-in 0.55s cubic-bezier(0.22, 1.2, 0.36, 1) both; animation-delay: var(--d, 0ms) }
+  .anim-drop       { animation: fx-drop 0.35s ease-out both; animation-delay: var(--d, 0ms) }
+  .anim-shake      { animation: fx-shake 0.45s ease-in-out both }
+
+  /* ── ambient / loops ───────────────────────────────────────────────── */
+  .anim-float      { animation: fx-float 5s ease-in-out infinite }
+  .anim-pulse-ring { animation: fx-pulse-ring 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite }
+  .anim-pulse-dot  { animation: fx-pulse-dot 1.6s ease-in-out infinite }
+  .anim-blink      { animation: fx-blink 1.4s ease-in-out infinite }
+  .anim-spin       { animation: fx-spin 0.9s linear infinite }
+  .anim-glow       { animation: fx-glow 2.4s ease-in-out infinite }
+  .anim-shake-once { animation: fx-shake 0.45s ease-in-out }
+
+  /* shimmering skeleton / placeholder sweep */
+  .anim-shimmer {
+    background-image: linear-gradient(
+      100deg,
+      rgba(226, 232, 240, 0) 20%,
+      rgba(226, 232, 240, 0.85) 50%,
+      rgba(226, 232, 240, 0) 80%
+    );
+    background-size: 220% 100%;
+    animation: fx-shimmer 1.6s linear infinite;
+  }
+
+  /* bars that grow out from the left (progress / timeline rules) */
+  .anim-grow-x {
+    transform-origin: left center;
+    animation: fx-grow-x 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--d, 0ms);
+  }
+
+  /* svg line drawings */
+  .anim-draw {
+    stroke-dasharray: var(--dash, 300);
+    animation: fx-draw 1.3s ease-out both;
+    animation-delay: var(--d, 0ms);
+  }
+
+  /* svg line drawings on paths normalised with pathLength="1" */
+  .anim-draw-path {
+    stroke-dasharray: 1;
+    animation: fx-draw-path 1.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation-delay: var(--d, 0ms);
+  }
+
+  .anim-fade-svg {
+    animation: fx-fade-svg 0.8s ease both;
+    animation-delay: var(--d, 0ms);
+  }
+
+  /* ── interaction affordances ───────────────────────────────────────── */
+  .hover-lift {
+    transition:
+      transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px -18px rgba(15, 23, 42, 0.35);
+  }
+  .hover-lift:active { transform: translateY(-1px) scale(0.995) }
+
+  .press { transition: transform 0.12s ease }
+  .press:active { transform: scale(0.97) }
+
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    width: 100%;
+    border-radius: 999px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* sweeping highlight across a card/row on hover */
+  .sheen { position: relative; overflow: hidden }
+  .sheen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.55) 45%,
+      transparent 90%
+    );
+    transform: translateX(-120%);
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .sheen:hover::after { transform: translateX(120%) }
+
+  /* view swap wrapper: keyed remount re-runs the entrance */
+  .view-enter { animation: fx-zoom-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both }
+
+  /* Mobile scroll utilities */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* ── Scroll-reveal system ───────────────────────────────────────────── */
+  /* Elements start invisible. JS adds .scroll-visible when they enter    */
+  /* the viewport via IntersectionObserver (useScrollReveal hook).        */
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-zoom {
+    opacity: 0;
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-d, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .reveal-up    { transform: translateY(28px) }
+  .reveal-left  { transform: translateX(-28px) }
+  .reveal-right { transform: translateX(28px) }
+  .reveal-zoom  { transform: scale(0.94) }
+
+  .scroll-visible.reveal-up,
+  .scroll-visible.reveal-left,
+  .scroll-visible.reveal-right,
+  .scroll-visible.reveal-zoom {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* Respect the OS-level motion preference - kill everything decorative. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Leaflet Container styling for crisp light theme */
+.leaflet-container {
+  font-family: inherit;
+  background: #F1F5F9;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #FFFFFF;
+  color: #1E293B;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #E2E8F0;
+}
+
+.leaflet-popup-tip {
+  background: #FFFFFF;
+}

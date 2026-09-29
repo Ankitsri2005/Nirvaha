@@ -1,0 +1,32 @@
+{
+  "name": "food-traceability-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 5173",
+    "test:imports": "node --import ./scripts/globals.mjs scripts/imports.mjs",
+    "test:smoke": "esbuild scripts/smoke.jsx --bundle --packages=external --platform=node --format=esm --target=node20 --jsx=automatic --outfile=scripts/.smoke.mjs --loader:.jsx=jsx --log-level=warning && node --import ./scripts/globals.mjs scripts/.smoke.mjs",
+    "test:render": "esbuild scripts/render.jsx --bundle --packages=external --platform=node --format=esm --target=node20 --jsx=automatic --outfile=scripts/.render.mjs --loader:.jsx=jsx --log-level=warning && node --import ./scripts/globals.mjs scripts/.render.mjs",
+    "test": "npm run test:imports && npm run test:smoke && npm run test:render"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "lucide-react": "^0.451.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-leaflet": "^4.2.1",
+    "react-router-dom": "^6.26.2",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "jsdom": "^29.1.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.4.8"
+  }
+}
