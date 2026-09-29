@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # --- PostgreSQL Database ---
+  db:
+    image: postgres:15-alpine
+    container_name: foodtrace_db
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-food_traceability}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # --- MQTT Broker for IoT Sensor Telemetry ---
+  mqtt:
+    image: eclipse-mosquitto:2
+    container_name: foodtrace_mqtt
+    restart: always
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - mosquitto_data:/mosquitto/data
+
+  # --- Backend REST & WebSocket API ---
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: foodtrace_backend
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - mqtt
+
+volumes:
+  postgres_data:
+  mosquitto_data:
