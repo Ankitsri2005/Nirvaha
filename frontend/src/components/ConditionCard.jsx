@@ -19,13 +19,12 @@ export default function ConditionCard({ telemetry }) {
       {/* Header */}
       <div className="flex items-center justify-between border-b border-slate-100 pb-3">
         <div className="flex items-center gap-2">
-          <span className="anim-float text-base">🌡</span>
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
             CONDITION
           </h3>
         </div>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">
-          <span className="anim-pulse-dot h-1.5 w-1.5 rounded-full bg-emerald-500" />
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-fresh-tint bg-fresh-tint px-2 py-0.5 text-[11px] font-semibold text-fresh">
+          <span className="anim-pulse-dot h-1.5 w-1.5 rounded-full bg-fresh" />
           Live Telemetry
         </span>
       </div>
@@ -47,13 +46,13 @@ export default function ConditionCard({ telemetry }) {
           <span
             className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold ${
               isTempSafe
-                ? 'border border-emerald-200 bg-emerald-50 text-emerald-700'
-                : 'border border-rose-200 bg-rose-50 text-rose-700'
+                ? 'border border-fresh-tint bg-fresh-tint text-fresh'
+                : 'border border-danger-tint bg-danger-tint text-danger'
             }`}
           >
             <span
               className={`anim-pulse-dot h-2 w-2 rounded-full ${
-                isTempSafe ? 'bg-emerald-500' : 'bg-rose-500'
+                isTempSafe ? 'bg-fresh' : 'bg-danger'
               }`}
             />
             {isTempSafe ? 'Optimal' : 'Breach'}
@@ -76,11 +75,11 @@ export default function ConditionCard({ telemetry }) {
           <span
             className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold ${
               isHumiditySafe
-                ? 'border border-emerald-200 bg-emerald-50 text-emerald-700'
-                : 'border border-amber-200 bg-amber-50 text-amber-700'
+                ? 'border border-fresh-tint bg-fresh-tint text-fresh'
+                : 'border border-warn-tint bg-warn-tint text-warn'
             }`}
           >
-            <span className="anim-pulse-dot h-2 w-2 rounded-full bg-emerald-500" />
+            <span className="anim-pulse-dot h-2 w-2 rounded-full bg-fresh" />
             Optimal
           </span>
         </div>
@@ -98,8 +97,8 @@ export default function ConditionCard({ telemetry }) {
               </span>
             </div>
           </div>
-          <span className="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-700">
-            <span className="anim-pulse-dot h-2 w-2 rounded-full bg-emerald-500" />
+          <span className="inline-flex items-center gap-1 rounded-full border border-fresh-tint bg-fresh-tint px-2 py-0.5 text-xs font-bold text-fresh">
+            <span className="anim-pulse-dot h-2 w-2 rounded-full bg-fresh" />
             Charged
           </span>
         </div>
@@ -111,7 +110,7 @@ export default function ConditionCard({ telemetry }) {
             style={{ '--d': '240ms' }}
           >
             <span className="text-slate-500">Door</span>
-            <span className="flex items-center gap-1 font-bold text-emerald-700">
+            <span className="flex items-center gap-1 font-bold text-fresh">
               <Lock className="h-3 w-3" /> Secure
             </span>
           </div>
@@ -121,8 +120,8 @@ export default function ConditionCard({ telemetry }) {
             style={{ '--d': '300ms' }}
           >
             <span className="text-slate-500">GPS</span>
-            <span className="flex items-center gap-1 font-bold text-emerald-700">
-              <Radio className="anim-pulse-dot h-3 w-3 text-emerald-600" /> Online
+            <span className="flex items-center gap-1 font-bold text-fresh">
+              <Radio className="anim-pulse-dot h-3 w-3 text-fresh" /> Online
             </span>
           </div>
         </div>

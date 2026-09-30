@@ -60,9 +60,9 @@ export default function App() {
   const currentBatch = batches[selectedBatchId] || Object.values(batches)[0]
 
   const roleProfiles = {
-    farmer: { name: 'Rajesh Patil', roleLabel: 'FARMER', icon: '🌱' },
-    transporter: { name: 'Suresh Gaikwad', roleLabel: 'TRANSPORTER', icon: '🚚' },
-    buyer: { name: 'Vikram Mehta', roleLabel: 'BUYER', icon: '🏢' }
+    farmer: { name: 'Rajesh Patil', roleLabel: 'FARMER' },
+    transporter: { name: 'Suresh Gaikwad', roleLabel: 'TRANSPORTER' },
+    buyer: { name: 'Vikram Mehta', roleLabel: 'BUYER' }
   }
 
   const baseProfile = roleProfiles[role] || roleProfiles.farmer
@@ -128,7 +128,7 @@ export default function App() {
             className="group flex cursor-pointer items-center gap-2 sm:gap-3"
             title="Go to Home Overview"
           >
-            <div className="anim-float flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-xs transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shrink-0">
+            <div className="anim-float flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-plum text-white shadow-xs transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shrink-0">
               <Sprout className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.4]" />
             </div>
             <div>
@@ -140,7 +140,7 @@ export default function App() {
           </div>
 
           <div className="anim-slide-right flex items-center gap-1.5 sm:gap-3 shrink-0" style={{ '--d': '120ms' }}>
-            <div className="hidden items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700 transition-colors duration-200 hover:border-emerald-300 hover:bg-emerald-50/60 md:flex">
+            <div className="hidden items-center gap-2 rounded-xl border border-plum-tint bg-plum-tint px-3 py-1.5 text-xs font-semibold text-plum transition-colors duration-200 hover:border-rose-200 hover:bg-rose-50 md:flex">
               <User className="h-3.5 w-3.5 text-slate-500" />
               <span>{currentProfile.name}</span>
             </div>
@@ -154,7 +154,7 @@ export default function App() {
                 onClick={handleLogout}
                 title="Sign out"
                 aria-label="Sign out"
-                className="ml-1 flex cursor-pointer items-center gap-1 rounded-lg border border-slate-200 p-1 sm:px-2 sm:py-1 text-xs font-bold text-slate-600 hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700"
+                className="ml-1 flex cursor-pointer items-center gap-1 rounded-lg border border-line p-1 sm:px-2 sm:py-1 text-xs font-bold text-muted hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700"
               >
                 <LogOut className="h-3.5 w-3.5" />
                 <span className="hidden md:inline">Sign out</span>
@@ -163,17 +163,17 @@ export default function App() {
 
             <button
               onClick={() => setIsQRModalOpen(true)}
-              className="flex cursor-pointer items-center gap-1 rounded-xl border border-slate-200 bg-white px-2 py-1.5 sm:px-3 text-xs font-bold text-slate-700 shadow-xs hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md"
+              className="flex cursor-pointer items-center gap-1 rounded-xl border border-line bg-paper px-2 py-1.5 sm:px-3 text-xs font-bold text-slate-700 shadow-xs hover:-translate-y-0.5 hover:border-line-strong hover:shadow-md"
               title="Share QR code"
             >
-              <QrCode className="anim-pulse-dot h-3.5 w-3.5 sm:h-4 sm:w-4 text-emerald-600" />
+              <QrCode className="anim-pulse-dot h-3.5 w-3.5 sm:h-4 sm:w-4 text-plum" />
               <span className="hidden sm:inline">QR</span>
             </button>
 
             {role === 'farmer' && (
               <button
                 onClick={() => setIsRegisterModalOpen(true)}
-                className="flex cursor-pointer items-center gap-1 rounded-xl bg-emerald-600 px-2.5 py-1.5 sm:px-3.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-lg"
+                className="flex cursor-pointer items-center gap-1 rounded-xl bg-plum px-2.5 py-1.5 sm:px-3.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-plum-dark hover:shadow-lg"
               >
                 <PlusCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 <span>Batch</span>
@@ -183,7 +183,7 @@ export default function App() {
             {role === 'transporter' && (
               <button
                 onClick={() => setIsTransporterModalOpen(true)}
-                className="flex cursor-pointer items-center gap-1 rounded-xl bg-sky-600 px-2.5 py-1.5 sm:px-3.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-sky-500 hover:shadow-lg"
+                className="flex cursor-pointer items-center gap-1 rounded-xl bg-plum px-2.5 py-1.5 sm:px-3.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-plum-dark hover:shadow-lg"
               >
                 <Truck className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 <span>Log</span>
@@ -193,7 +193,7 @@ export default function App() {
             {role === 'buyer' && (
               <button
                 onClick={() => setIsBuyerModalOpen(true)}
-                className="flex cursor-pointer items-center gap-1 rounded-xl bg-indigo-600 px-2.5 py-1.5 sm:px-3.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-indigo-500 hover:shadow-lg"
+                className="flex cursor-pointer items-center gap-1 rounded-xl bg-plum px-2.5 py-1.5 sm:px-3.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-plum-dark hover:shadow-lg"
               >
                 <Building2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 <span>Verify</span>
@@ -220,7 +220,7 @@ export default function App() {
               <div className="anim-fade-down flex items-center justify-between border-b border-slate-200 pb-3">
                 <button
                   onClick={() => changeView('dashboard')}
-                  className="press flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 shadow-xs hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md"
+                  className="press flex items-center gap-1.5 rounded-xl border border-line bg-paper px-3 py-1.5 text-xs font-bold text-slate-700 shadow-xs hover:-translate-y-0.5 hover:border-line-strong hover:text-plum hover:shadow-md"
                 >
                   <ArrowLeft className="h-4 w-4" />
                   <span>Back to Dashboard</span>
@@ -242,15 +242,15 @@ export default function App() {
               <div className="anim-fade-down flex items-center justify-between border-b border-slate-200 pb-3">
                 <button
                   onClick={() => changeView('dashboard')}
-                  className="press flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 shadow-xs hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md"
+                  className="press flex items-center gap-1.5 rounded-xl border border-line bg-paper px-3 py-1.5 text-xs font-bold text-slate-700 shadow-xs hover:-translate-y-0.5 hover:border-line-strong hover:text-plum hover:shadow-md"
                 >
                   <ArrowLeft className="h-4 w-4" />
                   <span>Back to Dashboard</span>
                 </button>
-                <span className="anim-fade-in flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">
+                <span className="anim-fade-in flex items-center gap-2 rounded-lg border border-transit-tint bg-transit-tint px-3 py-1 text-xs font-bold text-transit">
                   <span className="relative flex h-2 w-2">
-                    <span className="anim-pulse-ring absolute inline-flex h-full w-full rounded-full bg-emerald-400" />
-                    <span className="anim-pulse-dot relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                    <span className="anim-pulse-ring absolute inline-flex h-full w-full rounded-full bg-transit" />
+                    <span className="anim-pulse-dot relative inline-flex h-2 w-2 rounded-full bg-transit" />
                   </span>
                   Live GPS Active: {currentBatch.vehicleNumber} ({currentBatch.currentLocationName})
                 </span>
@@ -276,7 +276,7 @@ export default function App() {
             <div>
               <div className="mb-6">
                 <h1 className="anim-fade-up text-xl font-black text-slate-900">
-                  Good morning, {currentProfile.name.split(' ')[0]} 👋
+                  Good morning, {currentProfile.name.split(' ')[0]}
                 </h1>
                 <p className="anim-fade-up mt-0.5 text-xs text-slate-500" style={{ '--d': '60ms' }}>
                   Here's the current health of your food shipments.
@@ -285,11 +285,10 @@ export default function App() {
                 <div ref={revealKpi} className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 reveal-up" style={{ '--reveal-d': '80ms' }}>
                   <div
                     onClick={() => changeView('batches')}
-                    className="sheen hover-lift cursor-pointer rounded-2xl border border-slate-200 bg-white p-4 shadow-xs hover:border-emerald-300"
+                    className="sheen hover-lift cursor-pointer rounded-2xl border border-line bg-paper p-4 shadow-xs hover:border-line-strong"
                     title="Click to view all batches"
                   >
                     <div className="flex items-center gap-1.5 text-xs font-bold uppercase text-slate-500">
-                      <span className="anim-float">📦</span>
                       <span>BATCHES</span>
                     </div>
                     <div className="mt-2 text-2xl font-black text-slate-900">12</div>
@@ -298,47 +297,42 @@ export default function App() {
 
                   <div
                     onClick={() => changeView('map')}
-                    className="sheen hover-lift cursor-pointer rounded-2xl border border-slate-200 bg-white p-4 shadow-xs hover:border-emerald-300"
+                    className="sheen hover-lift cursor-pointer rounded-2xl border border-line bg-paper p-4 shadow-xs hover:border-line-strong"
                     title="Click to view live transit map"
                   >
                     <div className="flex items-center gap-1.5 text-xs font-bold uppercase text-slate-500">
-                      <span className="anim-float" style={{ animationDelay: '0.4s' }}>🚚</span>
                       <span>TRANSIT</span>
                     </div>
                     <div className="mt-2 text-2xl font-black text-slate-900">5</div>
-                    <p className="link-underline mt-1 inline-block text-[11px] font-semibold text-emerald-600">Track live on map &rarr;</p>
+                    <p className="link-underline mt-1 inline-block text-[11px] font-semibold text-plum">Track live on map &rarr;</p>
                   </div>
 
                   <div
                     onClick={() => changeView('alerts')}
-                    className="sheen hover-lift cursor-pointer rounded-2xl border border-slate-200 bg-white p-4 shadow-xs hover:border-rose-300"
+                    className="sheen hover-lift cursor-pointer rounded-2xl border border-line bg-paper p-4 shadow-xs hover:border-rose-300"
                     title="Click to view all alerts"
                   >
                     <div className="flex items-center gap-1.5 text-xs font-bold uppercase text-slate-500">
-                      <span className="anim-float" style={{ animationDelay: '0.8s' }}>🚨</span>
                       <span>ALERTS</span>
                     </div>
                     <div className="mt-2 flex items-baseline gap-2">
                       <span className="text-2xl font-black text-slate-900">2</span>
-                      <span className="flex items-center gap-1 text-xs font-bold text-rose-600">
-                        <span className="anim-blink">🔴</span> 1 Critical
-                      </span>
+                      <span className="text-xs font-bold text-danger">1 Critical</span>
                     </div>
-                    <p className="link-underline mt-1 inline-block text-[11px] font-medium text-rose-600">Review incidents &rarr;</p>
+                    <p className="link-underline mt-1 inline-block text-[11px] font-medium text-danger">Review incidents &rarr;</p>
                   </div>
 
                   <div
                     onClick={() => changeView('hardware')}
-                    className="sheen hover-lift cursor-pointer rounded-2xl border border-slate-200 bg-white p-4 shadow-xs hover:border-emerald-300"
+                    className="sheen hover-lift cursor-pointer rounded-2xl border border-line bg-paper p-4 shadow-xs hover:border-line-strong"
                     title="Click to open IoT Hardware specs & photo"
                   >
                     <div className="flex items-center gap-1.5 text-xs font-bold uppercase text-slate-500">
-                      <span className="anim-float" style={{ animationDelay: '1.2s' }}>📡</span>
                       <span>DEVICES</span>
                     </div>
                     <div className="mt-2 text-2xl font-black text-slate-900">8 / 10</div>
-                    <p className="mt-1 flex items-center gap-1 text-[11px] font-semibold text-emerald-600">
-                      <span className="anim-pulse-dot h-2 w-2 rounded-full bg-emerald-500"></span>
+                    <p className="mt-1 flex items-center gap-1 text-[11px] font-semibold text-fresh">
+                      <span className="anim-pulse-dot h-2 w-2 rounded-full bg-fresh"></span>
                       <span className="link-underline">View Hardware &rarr;</span>
                     </p>
                   </div>

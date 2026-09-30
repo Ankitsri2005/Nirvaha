@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Single source of truth for the plum & rose gold palette. The Tailwind config
+   exposes the same values as utilities; these vars back the hand-written CSS. */
+:root {
+  --blush: #f8f3f1;
+  --paper: #ffffff;
+  --sand: #f0e7e4;
+  --line: #eadfdc;
+  --line-strong: #d8c9c5;
+  --ink: #241a24;
+  --muted: #7a6a76;
+  --faint: #a697a2;
+  --plum: #4a2540;
+  --plum-dark: #341729;
+  --plum-tint: #efe3ec;
+  --rose: #c98a7a;
+  --rose-dark: #a5604f;
+  --rose-tint: #f6e6e1;
+  --fresh: #4f7f5e;
+  --fresh-tint: #e1eee5;
+  --warn: #c98a2e;
+  --warn-tint: #f7ead1;
+  --danger: #b23a48;
+  --danger-tint: #f5dde0;
+  --transit: #7a6a4f;
+  --transit-tint: #efeadf;
+}
+
 @layer base {
   html,
   body,
@@ -10,15 +37,15 @@
   }
 
   body {
-    background-color: #F8FAFC; /* Clean Crisp Slate-50 */
-    color: #0F172A; /* Slate-900 */
+    background-color: var(--blush);
+    color: var(--ink);
     font-feature-settings: 'cv02', 'cv03', 'cv04';
     -webkit-font-smoothing: antialiased;
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: #CBD5E1 transparent;
+    scrollbar-color: var(--line-strong) transparent;
   }
   ::-webkit-scrollbar {
     width: 7px;
@@ -28,16 +55,16 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #CBD5E1;
+    background: var(--line-strong);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #94A3B8;
+    background: var(--faint);
   }
 
   ::selection {
-    background: rgba(16, 185, 129, 0.2);
-    color: #065F46;
+    background: var(--plum-tint);
+    color: var(--plum-dark);
   }
 
   /* every control eases between states so nothing snaps */
@@ -57,24 +84,28 @@
   input,
   select,
   textarea {
-    background-color: #FFFFFF;
-    border: 1px solid #E2E8F0;
+    background-color: var(--paper);
+    border: 1px solid var(--line);
     border-radius: 0.75rem;
     padding: 0.5rem 0.75rem;
     font-size: 0.8125rem;
-    color: #1E293B;
+    color: var(--ink);
     outline: none;
     transition: all 0.15s ease-in-out;
   }
   input:focus,
   select:focus,
   textarea:focus {
-    border-color: #10B981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    border-color: var(--plum);
+    box-shadow: 0 0 0 3px rgba(74, 37, 64, 0.12);
   }
   select option {
-    background: #FFFFFF;
-    color: #1E293B;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--faint);
   }
 }
 
@@ -162,8 +193,8 @@
   100% { opacity: 1; transform: translateY(0) scale(1) }
 }
 @keyframes fx-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0) }
-  50%      { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.16) }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 37, 64, 0) }
+  50%      { box-shadow: 0 0 0 4px rgba(74, 37, 64, 0.16) }
 }
 @keyframes fx-shake {
   0%, 100% { transform: translateX(0) }
@@ -199,9 +230,9 @@
   .anim-shimmer {
     background-image: linear-gradient(
       100deg,
-      rgba(226, 232, 240, 0) 20%,
-      rgba(226, 232, 240, 0.85) 50%,
-      rgba(226, 232, 240, 0) 80%
+      rgba(234, 223, 220, 0) 20%,
+      rgba(234, 223, 220, 0.85) 50%,
+      rgba(234, 223, 220, 0) 80%
     );
     background-size: 220% 100%;
     animation: fx-shimmer 1.6s linear infinite;
@@ -242,7 +273,7 @@
   }
   .hover-lift:hover {
     transform: translateY(-3px);
-    box-shadow: 0 16px 32px -18px rgba(15, 23, 42, 0.35);
+    box-shadow: 0 16px 32px -18px rgba(36, 26, 36, 0.28);
   }
   .hover-lift:active { transform: translateY(-1px) scale(0.995) }
 
@@ -352,17 +383,17 @@
 /* Leaflet Container styling for crisp light theme */
 .leaflet-container {
   font-family: inherit;
-  background: #F1F5F9;
+  background: var(--blush);
 }
 
 .leaflet-popup-content-wrapper {
-  background: #FFFFFF;
-  color: #1E293B;
+  background: var(--paper);
+  color: var(--ink);
   border-radius: 0.75rem;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 25px -5px rgba(74, 37, 64, 0.12), 0 8px 10px -6px rgba(74, 37, 64, 0.1);
+  border: 1px solid var(--line);
 }
 
 .leaflet-popup-tip {
-  background: #FFFFFF;
+  background: var(--paper);
 }

@@ -27,14 +27,14 @@ export default function BatchesView({ batches, onSelectBatch, onBack, onOpenQR, 
         <div className="flex items-center gap-3">
           <button
             onClick={onBack}
-            className="press flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 shadow-xs hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md"
+            className="press flex items-center gap-1.5 rounded-xl border border-line bg-paper px-3 py-1.5 text-xs font-bold text-slate-700 shadow-xs hover:-translate-y-0.5 hover:border-line-strong hover:text-plum hover:shadow-md"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Dashboard</span>
           </button>
           <div>
             <h1 className="text-xl font-black text-slate-900 flex items-center gap-2">
-              <span>📦 Food Batches & Inventory Directory</span>
+              <span>Food Batches &amp; Inventory Directory</span>
               <span className="anim-pop rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-bold text-slate-600">
                 {allBatches.length} Batches
               </span>
@@ -53,7 +53,7 @@ export default function BatchesView({ batches, onSelectBatch, onBack, onOpenQR, 
               onClick={() => setFilter(f)}
               className={`rounded-lg px-3 py-1 text-xs font-bold capitalize transition-all duration-200 hover:-translate-y-0.5 ${
                 filter === f
-                  ? 'bg-emerald-600 text-white shadow-md ring-2 ring-emerald-200'
+                  ? 'bg-plum text-white shadow-md ring-2 ring-plum-tint'
                   : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
               }`}
             >
@@ -80,7 +80,7 @@ export default function BatchesView({ batches, onSelectBatch, onBack, onOpenQR, 
         {filtered.map((batch, i) => (
           <div
             key={batch.id}
-            className="sheen hover-lift anim-bounce-in flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-xs hover:border-emerald-300"
+            className="sheen hover-lift anim-bounce-in flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-xs hover:border-line-strong"
             style={{ '--d': `${i * 90}ms` }}
           >
             <div>
@@ -94,10 +94,10 @@ export default function BatchesView({ batches, onSelectBatch, onBack, onOpenQR, 
                 <span
                   className={`rounded-full px-2.5 py-0.5 text-[11px] font-bold ${
                     batch.status.includes('Delivered')
-                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                      ? 'bg-fresh-tint text-fresh border border-fresh-tint'
                       : batch.status.includes('Transit')
-                      ? 'bg-sky-50 text-sky-700 border border-sky-200'
-                      : 'bg-amber-50 text-amber-700 border border-amber-200'
+                      ? 'bg-transit-tint text-transit border border-transit-tint'
+                      : 'bg-warn-tint text-warn border border-warn-tint'
                   }`}
                 >
                   {batch.status}
@@ -119,7 +119,7 @@ export default function BatchesView({ batches, onSelectBatch, onBack, onOpenQR, 
                 </div>
                 <div className="flex items-center justify-between text-slate-600">
                   <span className="text-slate-400">Temperature:</span>
-                  <span className="font-bold text-emerald-700">{batch.telemetry?.temperature}°C</span>
+                  <span className="font-bold text-plum">{batch.telemetry?.temperature}°C</span>
                 </div>
               </div>
             </div>
@@ -130,9 +130,9 @@ export default function BatchesView({ batches, onSelectBatch, onBack, onOpenQR, 
                   onSelectBatch(batch.id)
                   onOpenQR(batch)
                 }}
-                className="press flex items-center gap-1 text-xs font-bold text-slate-700 hover:text-emerald-700"
+                className="press flex items-center gap-1 text-xs font-bold text-slate-700 hover:text-plum"
               >
-                <QrCode className="h-3.5 w-3.5 text-emerald-600" />
+                <QrCode className="h-3.5 w-3.5 text-plum" />
                 <span>Show QR</span>
               </button>
 
@@ -141,7 +141,7 @@ export default function BatchesView({ batches, onSelectBatch, onBack, onOpenQR, 
                   onSelectBatch(batch.id)
                   onOpenMap()
                 }}
-                className="press flex items-center gap-1 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-md"
+                className="press flex items-center gap-1 rounded-lg bg-plum px-3 py-1.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-plum-dark hover:shadow-md"
               >
                 <Map className="h-3.5 w-3.5" />
                 <span>Track on Map</span>

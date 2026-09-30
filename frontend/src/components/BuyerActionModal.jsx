@@ -32,7 +32,7 @@ export default function BuyerActionModal({ isOpen, onClose, batch, onUpdate }) {
         </button>
 
         <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-tint text-rose-dark">
             <Award className="h-5 w-5" />
           </div>
           <div>
@@ -53,7 +53,7 @@ export default function BuyerActionModal({ isOpen, onClose, batch, onUpdate }) {
             <p className="text-slate-600">
               Origin Farm: <span className="text-slate-900">{batch.farmLocation}</span>
             </p>
-            <p className="text-emerald-700 font-bold mt-1">
+            <p className="text-fresh font-bold mt-1">
               IoT Freshness: {batch.telemetry?.freshnessScore}% &bull; Avg Temp: {batch.telemetry?.temperature}°C
             </p>
           </div>
@@ -89,7 +89,7 @@ export default function BuyerActionModal({ isOpen, onClose, batch, onUpdate }) {
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 rounded-xl bg-indigo-600 py-2.5 text-xs font-bold text-white hover:bg-indigo-500 transition-all shadow-sm"
+              className="w-full flex items-center justify-center gap-2 rounded-xl bg-plum py-2.5 text-xs font-bold text-white hover:bg-plum-dark transition-all shadow-sm"
             >
               <CheckCircle2 className="h-4 w-4" />
               <span>Sign & Complete Final Quality Check</span>

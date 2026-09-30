@@ -38,7 +38,7 @@ export default function BatchQRModal({ batch, isOpen, onClose }) {
 
         {/* Header */}
         <div className="text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-plum-tint text-plum">
             <QrCode className="h-6 w-6" />
           </div>
           <h3 className="mt-3 text-lg font-bold text-slate-900">Batch QR & Share Pass</h3>
@@ -51,7 +51,7 @@ export default function BatchQRModal({ batch, isOpen, onClose }) {
         {/* QR Code Container */}
         <div className="mt-5 flex flex-col items-center justify-center rounded-xl border border-slate-100 bg-slate-50 p-4">
           <div className="anim-pop relative overflow-hidden rounded-xl border border-slate-200/80 bg-white p-2.5 shadow-sm">
-            <span className="anim-pulse-ring pointer-events-none absolute inset-0 rounded-xl border-2 border-emerald-400" />
+            <span className="anim-pulse-ring pointer-events-none absolute inset-0 rounded-xl border-2 border-plum" />
             <img
               src={qrImageUrl}
               alt={`QR Code for batch ${batch.id}`}
@@ -68,7 +68,7 @@ export default function BatchQRModal({ batch, isOpen, onClose }) {
                 title="Copy Batch ID"
                 className="rounded p-1 text-slate-400 hover:text-slate-700"
               >
-                {copiedId ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
+                {copiedId ? <Check className="h-3.5 w-3.5 text-plum" /> : <Copy className="h-3.5 w-3.5" />}
               </button>
             </div>
             <p className="anim-fade-up mt-0.5 text-xs font-medium text-slate-600" style={{ '--d': '320ms' }}>
@@ -89,7 +89,7 @@ export default function BatchQRModal({ batch, isOpen, onClose }) {
             />
             <button
               onClick={handleCopyLink}
-              className="flex items-center gap-1 rounded-lg bg-emerald-600 px-3 py-1 text-xs font-semibold text-white hover:bg-emerald-500 whitespace-nowrap transition-colors shadow-xs"
+              className="flex items-center gap-1 rounded-lg bg-plum px-3 py-1 text-xs font-semibold text-white hover:bg-plum-dark whitespace-nowrap transition-colors shadow-xs"
             >
               {copiedLink ? (
                 <>
@@ -105,12 +105,12 @@ export default function BatchQRModal({ batch, isOpen, onClose }) {
         </div>
 
         {/* Role instructions */}
-        <div className="mt-4 rounded-xl border border-emerald-100 bg-emerald-50/60 p-3 text-[11px] text-emerald-900">
+        <div className="mt-4 rounded-xl border border-rose-100 bg-rose-50/60 p-3 text-[11px] text-rose-900">
           <div className="flex items-center gap-1.5 font-bold mb-1">
-            <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
+            <ShieldCheck className="h-3.5 w-3.5 text-rose" />
             <span>No separate login needed</span>
           </div>
-          <p className="text-emerald-800">
+          <p className="text-rose-800">
             When the Transporter or Buyer signs in, they pick their role, enter this Batch ID, and see the same live
             dashboard.
           </p>
@@ -120,7 +120,7 @@ export default function BatchQRModal({ batch, isOpen, onClose }) {
         <div className="mt-5">
           <button
             onClick={onClose}
-            className="w-full rounded-xl bg-slate-900 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-slate-800"
+            className="w-full rounded-xl bg-plum py-2.5 text-xs font-semibold text-white transition-colors hover:bg-plum-dark"
           >
             Done
           </button>

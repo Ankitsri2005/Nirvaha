@@ -49,7 +49,6 @@ export default function TemperatureChart({ currentTemp = 7.8, tempRange = [4, 10
       {/* Card Header */}
       <div className="flex items-center justify-between border-b border-slate-100 pb-3">
         <div className="flex items-center gap-2">
-          <span className="anim-float text-base">📈</span>
           <h3 className="text-sm font-bold text-slate-900">TEMPERATURE HISTORY</h3>
         </div>
 
@@ -69,8 +68,8 @@ export default function TemperatureChart({ currentTemp = 7.8, tempRange = [4, 10
         <svg viewBox={`0 0 ${width} ${height}`} className="h-auto w-full overflow-visible">
           <defs>
             <linearGradient id="tempGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#10B981" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#10B981" stopOpacity="0.0" />
+              <stop offset="0%" stopColor="#4A2540" stopOpacity="0.22" />
+              <stop offset="100%" stopColor="#4A2540" stopOpacity="0.0" />
             </linearGradient>
           </defs>
 
@@ -80,7 +79,7 @@ export default function TemperatureChart({ currentTemp = 7.8, tempRange = [4, 10
             y1={getY(tempRange[1])}
             x2={width - padding.right}
             y2={getY(tempRange[1])}
-            stroke="#EF4444"
+            stroke="#B23A48"
             strokeDasharray="4 4"
             strokeWidth="1.2"
             className="anim-fade-svg"
@@ -93,7 +92,7 @@ export default function TemperatureChart({ currentTemp = 7.8, tempRange = [4, 10
             x={width - padding.right}
             y={getY(tempRange[1]) - 5}
             textAnchor="end"
-            className="anim-fade-svg fill-rose-500 text-[9px] font-semibold"
+            className="anim-fade-svg fill-danger text-[9px] font-semibold"
             style={{ '--d': '250ms' }}
           >
             Safe Max
@@ -105,7 +104,7 @@ export default function TemperatureChart({ currentTemp = 7.8, tempRange = [4, 10
             y1={getY(tempRange[0])}
             x2={width - padding.right}
             y2={getY(tempRange[0])}
-            stroke="#3B82F6"
+            stroke="#7A6A4F"
             strokeDasharray="4 4"
             strokeWidth="1.2"
             className="anim-fade-svg"
@@ -121,7 +120,7 @@ export default function TemperatureChart({ currentTemp = 7.8, tempRange = [4, 10
             y1={getY(8)}
             x2={width - padding.right}
             y2={getY(8)}
-            stroke="#E2E8F0"
+            stroke="#EADFDC"
             strokeWidth="1"
             className="anim-fade-svg"
             style={{ '--d': '100ms' }}
@@ -137,7 +136,7 @@ export default function TemperatureChart({ currentTemp = 7.8, tempRange = [4, 10
           <path
             d={pathD}
             fill="none"
-            stroke="#059669"
+            stroke="#4A2540"
             strokeWidth="2.5"
             strokeLinecap="round"
             pathLength="1"
@@ -155,7 +154,7 @@ export default function TemperatureChart({ currentTemp = 7.8, tempRange = [4, 10
                     cx={getX(i)}
                     cy={getY(p.temp)}
                     r="5"
-                    fill="#059669"
+                    fill="#4A2540"
                     className="anim-pulse-ring origin-center"
                   />
                 )}
@@ -163,8 +162,8 @@ export default function TemperatureChart({ currentTemp = 7.8, tempRange = [4, 10
                   cx={getX(i)}
                   cy={getY(p.temp)}
                   r={isLast ? 5 : 3.5}
-                  fill={isLast ? '#059669' : '#FFFFFF'}
-                  stroke="#059669"
+                  fill={isLast ? '#4A2540' : '#FFFFFF'}
+                  stroke="#4A2540"
                   strokeWidth="2"
                   className="transition-all duration-200 hover:r-5"
                 />
@@ -184,7 +183,7 @@ export default function TemperatureChart({ currentTemp = 7.8, tempRange = [4, 10
 
       <div className="mt-2 flex items-center justify-between border-t border-slate-100 pt-2.5 text-[11px] text-slate-500">
         <span className="flex items-center gap-1.5">
-          <span className="anim-pulse-dot h-2 w-2 rounded-full bg-emerald-500" />
+          <span className="anim-pulse-dot h-2 w-2 rounded-full bg-fresh" />
           <span>
             Current: <strong className="font-bold text-slate-800">{currentTemp}°C</strong> (Optimal Cold Chain)
           </span>

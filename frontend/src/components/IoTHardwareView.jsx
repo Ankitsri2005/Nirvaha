@@ -19,61 +19,61 @@ export default function IoTHardwareView({ onBack }) {
       component: 'Microcontroller',
       part: 'ESP32 NodeMCU Development Board',
       details: 'Xtensa Dual-Core 32-bit LX6 @ 240MHz, 520KB SRAM, 4MB Flash',
-      status: 'Active 🟢'
+      status: 'Active'
     },
     {
       component: 'Temperature Sensor',
       part: 'DS18B20 Stainless Waterproof Probe',
       details: 'OneWire Protocol, Range: -55°C to +125°C, Accuracy: ±0.5°C',
-      status: 'GPIO 4 (4.7kΩ Pullup) 🟢'
+      status: 'GPIO 4 (4.7kΩ Pullup)'
     },
     {
       component: 'Humidity Sensor',
       part: 'DHT22 / AM2302 Digital Sensor',
       details: 'Range: 0-100% RH, Accuracy: ±2% RH, Sampling: 0.5 Hz',
-      status: 'GPIO 15 🟢'
+      status: 'GPIO 15'
     },
     {
       component: 'GPS Location Tracker',
       part: 'u-blox NEO-6M GPS Receiver',
       details: 'Ceramic patch antenna, 50-channel tracking engine, 1-second update',
-      status: 'UART2 (RX2: 16, TX2: 17) 🟢'
+      status: 'UART2 (RX2: 16, TX2: 17)'
     },
     {
       component: 'Gas / Spoilage Sensor',
       part: 'MQ-135 Air Quality Sensor',
       details: 'Analog NH3 / VOC output, 5V heater supply, 10kΩ+20kΩ divider to 3.3V ADC',
-      status: 'ADC1 (GPIO 34) 🟢'
+      status: 'ADC1 (GPIO 34)'
     },
     {
       component: 'Tamper Switch',
       part: 'Reed Switch (Door Seal)',
       details: 'Normally-closed contact on door frame, opens on seal breach, internal pull-up',
-      status: 'GPIO 32 (Pullup) 🟢'
+      status: 'GPIO 32 (Pullup)'
     },
     {
       component: 'Onboard Display',
       part: '0.96" Blue I2C OLED (SSD1306)',
       details: '128x64 pixels, displays live Temp, Humidity, and GPS status',
-      status: 'I2C (SDA: 21, SCL: 22) 🟢'
+      status: 'I2C (SDA: 21, SCL: 22)'
     },
     {
       component: 'Offline Buffer',
       part: 'microSD Card Module (SPI)',
       details: 'Offline telemetry buffer for tunnel / no-signal transits, flushed on reconnect',
-      status: 'SPI (CS 13, MOSI 23, MISO 19, SCK 18) 🟢'
+      status: 'SPI (CS 13, MOSI 23, MISO 19, SCK 18)'
     },
     {
       component: 'Power Module',
       part: '3.7V Rechargeable Li-ion Battery Pack',
       details: 'Battery pack with TP4056 micro-USB charging & safety cut-off',
-      status: '3.7V / 4.1V Charged 🟢'
+      status: '3.7V / 4.1V Charged'
     },
     {
       component: 'Voltage Regulator',
       part: 'Buck Converter (LM2596 / MP1584)',
       details: '3.7V battery to regulated 5V rail for GPS module and MQ-135 heater',
-      status: '5V Rail 🟢'
+      status: '5V Rail'
     }
   ]
 
@@ -96,14 +96,14 @@ export default function IoTHardwareView({ onBack }) {
         <div className="flex items-center gap-3">
           <button
             onClick={onBack}
-            className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors shadow-xs"
+            className="flex items-center gap-1.5 rounded-xl border border-line bg-paper px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-blush transition-colors shadow-xs"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Dashboard</span>
           </button>
           <div>
             <h1 className="text-xl font-black text-slate-900 flex items-center gap-2">
-              <span>🔧 IoT Hardware Setup</span>
+              <span>IoT Hardware Setup</span>
               <span className="rounded-full bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 text-xs font-bold text-emerald-800">
                 ESP32 Node Online
               </span>
@@ -124,7 +124,6 @@ export default function IoTHardwareView({ onBack }) {
       <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div className="flex items-center gap-2">
-            <span className="text-base">📸</span>
             <h2 className="text-sm font-bold text-slate-900">COLD-CHAIN IOT HARDWARE SETUP</h2>
           </div>
           <span className="font-mono text-xs text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">

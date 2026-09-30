@@ -4,6 +4,94 @@ export default {
   theme: {
     extend: {
       colors: {
+        // ══ plum & rose gold · light theme ══════════════════════════════════════
+        // surfaces
+        blush: '#F8F3F1',
+        paper: '#FFFFFF',
+        sand: '#F0E7E4',
+        line: '#EADFDC',
+        'line-strong': '#D8C9C5',
+        // text
+        ink: '#241A24',
+        muted: '#7A6A76',
+        faint: '#A697A2',
+
+        // brand
+        plum: { DEFAULT: '#4A2540', dark: '#341729', tint: '#EFE3EC' },
+        rose: {
+          DEFAULT: '#C98A7A',
+          dark: '#A5604F',
+          tint: '#F6E6E1',
+          50: '#FBF4F2',
+          100: '#F6E6E1',
+          200: '#EED4CB',
+          300: '#E0B7A8',
+          400: '#D49D8B',
+          500: '#C98A7A',
+          600: '#B87A69',
+          700: '#A5604F',
+          800: '#8A4E40',
+          900: '#6B3B30',
+        },
+
+        // status
+        fresh: { DEFAULT: '#4F7F5E', tint: '#E1EEE5' },
+        warn: { DEFAULT: '#C98A2E', tint: '#F7EAD1' },
+        danger: { DEFAULT: '#B23A48', tint: '#F5DDE0' },
+        transit: { DEFAULT: '#7A6A4F', tint: '#EFEADF' },
+
+        // legacy stock scales remapped onto the tokens above, so older markup
+        // that still says `slate-700` / `emerald-600` / `rose-500` lands in palette
+        slate: {
+          50: '#F8F3F1',
+          100: '#F0E7E4',
+          200: '#EADFDC',
+          300: '#D8C9C5',
+          400: '#A697A2',
+          500: '#7A6A76',
+          600: '#7A6A76',
+          700: '#5C4756',
+          800: '#3B2A38',
+          900: '#241A24',
+          950: '#341729',
+        },
+        emerald: {
+          50: '#F2F7F4',
+          100: '#E1EEE5',
+          200: '#C7DDD0',
+          300: '#A6C6B1',
+          400: '#7FA98E',
+          500: '#63917A',
+          600: '#4F7F5E',
+          700: '#3F6A4D',
+          800: '#34573F',
+          900: '#2A4733',
+        },
+        amber: {
+          50: '#FDF8EE',
+          100: '#F7EAD1',
+          200: '#EFDCB2',
+          300: '#E5C888',
+          400: '#DAB061',
+          500: '#D29C41',
+          600: '#C98A2E',
+          700: '#A8741F',
+          800: '#825A18',
+          900: '#5E4113',
+        },
+        red: {
+          50: '#FCF1F2',
+          100: '#F5DDE0',
+          200: '#EBBFC5',
+          300: '#DC9AA4',
+          400: '#CB7482',
+          500: '#B23A48',
+          600: '#9B303D',
+          700: '#822833',
+          800: '#6B2129',
+          900: '#561B22',
+        },
+
         // ---- base: deep midnight-teal, never pure black -------------------------
         abyss: {
           950: '#05080D',

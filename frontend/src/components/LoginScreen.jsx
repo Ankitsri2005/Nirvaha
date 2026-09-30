@@ -13,9 +13,9 @@ export default function LoginScreen({ onLogin }) {
   const [signupModal, setSignupModal] = useState(false)
 
   const rolePresets = {
-    farmer: { name: 'Rajesh Patil', label: 'Farmer', icon: Sprout },
-    transporter: { name: 'Suresh Gaikwad', label: 'Transporter', icon: Truck },
-    buyer: { name: 'Vikram Mehta', label: 'Buyer', icon: Building2 },
+    farmer: { name: 'Rajesh Patil', label: 'Farmer', icon: Sprout, accent: '#4F7F5E' },
+    transporter: { name: 'Suresh Gaikwad', label: 'Transporter', icon: Truck, accent: '#7A6A4F' },
+    buyer: { name: 'Vikram Mehta', label: 'Buyer', icon: Building2, accent: '#C98A7A' },
   }
 
   const handleRoleChange = (selectedRole) => {
@@ -57,8 +57,8 @@ export default function LoginScreen({ onLogin }) {
     >
       {/* Subtle vignette/depth overlay for contrast */}
       <div className="anim-fade-in pointer-events-none absolute inset-0 bg-black/15 backdrop-blur-[1px]" />
-      <div className="pointer-events-none absolute -left-24 top-1/4 h-[420px] w-[420px] animate-aurora rounded-full bg-emerald-400/10 blur-[110px]" />
-      <div className="pointer-events-none absolute -right-24 bottom-1/4 h-[380px] w-[380px] animate-aurora2 rounded-full bg-sky-400/10 blur-[110px]" />
+      <div className="pointer-events-none absolute -left-24 top-1/4 h-[420px] w-[420px] animate-aurora rounded-full bg-plum/15 blur-[110px]" />
+      <div className="pointer-events-none absolute -right-24 bottom-1/4 h-[380px] w-[380px] animate-aurora2 rounded-full bg-rose/20 blur-[110px]" />
 
       {/* Glassmorphism Card matching user reference */}
       <div className="anim-bounce-in relative z-10 w-full max-w-[420px] rounded-[24px] sm:rounded-[32px] border border-white/60 bg-white/[0.12] p-5 sm:p-9 shadow-2xl backdrop-blur-xl">
@@ -80,7 +80,7 @@ export default function LoginScreen({ onLogin }) {
                     : 'text-white/70 hover:-translate-y-0.5 hover:bg-white/10 hover:text-white'
                 }`}
               >
-                <Icon className={`h-3 w-3 sm:h-3.5 sm:w-3.5 transition-transform duration-300 ${active ? 'scale-110' : ''}`} />
+                <Icon className={`h-3 w-3 sm:h-3.5 sm:w-3.5 transition-transform duration-300 ${active ? 'scale-110' : ''}`} style={active ? { color: item.accent } : undefined} />
                 <span>{item.label}</span>
               </button>
             )
@@ -152,7 +152,7 @@ export default function LoginScreen({ onLogin }) {
               <div
                 className={`flex h-[18px] w-[18px] items-center justify-center rounded-[5px] border transition-all duration-150 ${
                   rememberMe
-                    ? 'border-[#92a83e] bg-[#8ba436] text-white shadow-xs'
+                    ? 'border-plum bg-plum text-white shadow-xs'
                     : 'border-white/60 bg-white/10 group-hover:border-white'
                 }`}
               >
@@ -166,21 +166,21 @@ export default function LoginScreen({ onLogin }) {
 
           {/* Error Message */}
           {error && (
-            <div className="anim-shake flex items-center gap-2 rounded-xl border border-rose-300/40 bg-rose-500/20 px-3.5 py-2 text-xs font-medium text-rose-100 backdrop-blur-sm">
+            <div className="anim-shake flex items-center gap-2 rounded-xl border border-danger/40 bg-danger/25 px-3.5 py-2 text-xs font-medium text-danger-tint backdrop-blur-sm">
               <AlertCircle className="h-4 w-4 shrink-0" />
               <span>{error}</span>
             </div>
           )}
 
-          {/* Login Button with exact olive green gradient */}
+          {/* Login Button with plum gradient */}
           <button
             type="submit"
             id="login-submit-btn"
             disabled={busy}
             style={{
-              background: 'linear-gradient(180deg, #99ae47 0%, #5d7522 100%)',
+              background: 'linear-gradient(180deg, #5A2E4E 0%, #341729 100%)',
             }}
-            className="sheen press w-full cursor-pointer overflow-hidden rounded-2xl border border-[#b4ce55]/40 py-3.5 text-center text-[16.5px] font-semibold text-white shadow-md shadow-emerald-950/20 transition-all duration-200 hover:brightness-105 hover:shadow-lg active:scale-[0.99] disabled:opacity-75"
+            className="sheen press w-full cursor-pointer overflow-hidden rounded-2xl border border-plum-tint/30 py-3.5 text-center text-[16.5px] font-semibold text-white shadow-md shadow-plum-dark/25 transition-all duration-200 hover:brightness-110 hover:shadow-lg active:scale-[0.99] disabled:opacity-75"
           >
             {busy ? (
               <span className="inline-flex items-center justify-center gap-2">

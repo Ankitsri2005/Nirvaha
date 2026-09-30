@@ -6,19 +6,16 @@ export const ROLES = [
   {
     key: 'farmer',
     label: 'Farmer',
-    emoji: '🌱',
     blurb: 'Registers a batch, watches its journey and shares the tracking QR.',
   },
   {
     key: 'transporter',
     label: 'Transporter',
-    emoji: '🚚',
     blurb: 'Logs route checkpoints and reefer climate updates.',
   },
   {
     key: 'buyer',
     label: 'Buyer',
-    emoji: '🏢',
     blurb: 'Verifies farm origin and performs the final quality check.',
   },
 ]

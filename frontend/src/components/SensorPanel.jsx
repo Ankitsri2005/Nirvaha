@@ -80,14 +80,14 @@ export default function SensorPanel({ batch }) {
         <div
           className={`rounded-xl border p-3.5 transition-all ${
             isHumidityNormal
-              ? 'border-sky-200 bg-sky-50/50'
+              ? 'border-transit-tint bg-transit-tint/50'
               : 'border-amber-300 bg-amber-50'
           }`}
         >
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-600">Humidity</span>
             <Droplets
-              className={`h-4 w-4 ${isHumidityNormal ? 'text-sky-600' : 'text-amber-600'}`}
+              className={`h-4 w-4 ${isHumidityNormal ? 'text-transit' : 'text-amber-600'}`}
             />
           </div>
           <div className="mt-2 flex items-baseline gap-1">
@@ -101,7 +101,7 @@ export default function SensorPanel({ batch }) {
             <span
               className={`rounded px-1.5 py-0.5 font-bold ${
                 isHumidityNormal
-                  ? 'bg-sky-100 text-sky-800'
+                  ? 'bg-transit-tint text-transit'
                   : 'bg-amber-100 text-amber-800'
               }`}
             >

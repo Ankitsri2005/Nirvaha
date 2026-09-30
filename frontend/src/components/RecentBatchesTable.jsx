@@ -3,20 +3,11 @@ import { ChevronRight } from 'lucide-react'
 export default function RecentBatchesTable({ batches, selectedId, onSelectBatch }) {
   const batchList = Object.values(batches || {})
 
-  const getEmoji = (name) => {
-    const l = name.toLowerCase()
-    if (l.includes('mango')) return '🥭'
-    if (l.includes('tomato')) return '🍅'
-    if (l.includes('orange')) return '🍊'
-    return '📦'
-  }
-
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-xs">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-slate-100 pb-3">
         <div className="flex items-center gap-2">
-          <span className="text-base">📦</span>
           <h3 className="text-xs font-bold tracking-wider text-slate-500 uppercase">
             RECENT BATCHES
           </h3>
@@ -41,16 +32,13 @@ export default function RecentBatchesTable({ batches, selectedId, onSelectBatch 
               onClick={() => onSelectBatch(batch.id)}
               className={`anim-fade-up group flex cursor-pointer flex-col gap-2 sm:flex-row sm:items-center sm:justify-between rounded-xl px-2.5 py-3 sm:px-3 sm:py-3.5 transition-all duration-200 ${
                 isSelected
-                  ? 'border border-emerald-200 bg-emerald-50/70 shadow-sm'
+                  ? 'border border-plum-tint bg-plum-tint/70 shadow-sm'
                   : 'border border-transparent hover:-translate-y-0.5 hover:border-slate-200 hover:bg-slate-50 hover:shadow-sm'
               }`}
               style={{ '--d': `${i * 70}ms` }}
             >
               {/* Product Info */}
               <div className="flex items-center gap-3">
-                <span className="anim-bounce-in text-2xl transition-transform duration-300 group-hover:scale-125 group-hover:-rotate-6 shrink-0">
-                  {getEmoji(batch.product)}
-                </span>
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-xs font-bold text-slate-900">{batch.id}</span>
@@ -69,17 +57,16 @@ export default function RecentBatchesTable({ batches, selectedId, onSelectBatch 
                 <span
                   className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold ${
                     isAtRisk
-                      ? 'border border-rose-200 bg-rose-50 text-rose-700'
+                      ? 'anim-blink border border-danger-tint bg-danger-tint text-danger'
                       : isDelivered
-                      ? 'border border-emerald-200 bg-emerald-50 text-emerald-700'
-                      : 'border border-sky-200 bg-sky-50 text-sky-700'
+                      ? 'border border-fresh-tint bg-fresh-tint text-fresh'
+                      : 'border border-transit-tint bg-transit-tint text-transit'
                   }`}
                 >
-                  <span>{isAtRisk ? '⚠ At Risk' : isDelivered ? '📦 Delivered' : '🚚 In Transit'}</span>
-                  <span className={isAtRisk ? 'anim-blink' : 'anim-pulse-dot'}>{isAtRisk ? '🔴' : '🟢'}</span>
+                  <span>{isAtRisk ? 'At Risk' : isDelivered ? 'Delivered' : 'In Transit'}</span>
                 </span>
 
-                <ChevronRight className="h-4 w-4 text-slate-400 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-emerald-600" />
+                <ChevronRight className="h-4 w-4 text-slate-400 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-plum" />
               </div>
             </div>
           )

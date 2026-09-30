@@ -103,10 +103,10 @@ export const ROUTE_PATH = buildPath(ROUTE_WAYPOINTS, 22, 7)
  * Product catalogue + per-category thresholds
  * ------------------------------------------------------------------ */
 export const CATALOG = {
-  mango: { emoji: '\u{1F96D}', accent: '#FFC24B', shelfLifeDays: 14 },
-  grapes: { emoji: '\u{1F347}', accent: '#A78BFF', shelfLifeDays: 21 },
-  chilli: { emoji: '\u{1F336}', accent: '#FF7A45', shelfLifeDays: 10 },
-  pomegranate: { emoji: '\u{1F345}', accent: '#FF5C7A', shelfLifeDays: 28 },
+  mango: { accent: '#FFC24B', shelfLifeDays: 14 },
+  grapes: { accent: '#A78BFF', shelfLifeDays: 21 },
+  chilli: { accent: '#FF7A45', shelfLifeDays: 10 },
+  pomegranate: { accent: '#FF5C7A', shelfLifeDays: 28 },
 }
 
 /**

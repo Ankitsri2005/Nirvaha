@@ -41,7 +41,7 @@ export default function TransporterActionModal({ isOpen, onClose, batch, onUpdat
         </button>
 
         <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-transit-tint text-transit">
             <Truck className="h-5 w-5" />
           </div>
           <div>
@@ -86,7 +86,7 @@ export default function TransporterActionModal({ isOpen, onClose, batch, onUpdat
                 type="checkbox"
                 checked={advanceStage}
                 onChange={(e) => setAdvanceStage(e.target.checked)}
-                className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                className="h-4 w-4 rounded border-line-strong text-plum focus:ring-plum"
               />
               <span className="text-xs font-medium text-slate-700">Advance shipment to next journey stage</span>
             </label>
@@ -95,7 +95,7 @@ export default function TransporterActionModal({ isOpen, onClose, batch, onUpdat
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 rounded-xl bg-sky-600 py-2.5 text-xs font-bold text-white hover:bg-sky-500 transition-colors shadow-sm"
+              className="w-full flex items-center justify-center gap-2 rounded-xl bg-plum py-2.5 text-xs font-bold text-white hover:bg-plum-dark transition-colors shadow-sm"
             >
               <CheckCircle2 className="h-4 w-4" />
               <span>Record Update</span>

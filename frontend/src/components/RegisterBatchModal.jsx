@@ -99,7 +99,7 @@ export default function RegisterBatchModal({ isOpen, onClose, onBatchCreated }) 
 
         {/* Title */}
         <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-plum-tint text-plum">
             <Sprout className="h-6 w-6" />
           </div>
           <div>
@@ -303,7 +303,7 @@ export default function RegisterBatchModal({ isOpen, onClose, onBatchCreated }) 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3 text-xs font-bold text-white transition-all hover:bg-emerald-500 shadow-md disabled:opacity-50"
+              className="w-full flex items-center justify-center gap-2 rounded-xl bg-plum py-3 text-xs font-bold text-white transition-all hover:bg-plum-dark shadow-md disabled:opacity-50"
             >
               <PlusCircle className="h-4 w-4" />
               <span>{isSubmitting ? 'Registering...' : 'Register Batch & Generate QR Code'}</span>

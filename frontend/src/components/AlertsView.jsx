@@ -48,15 +48,15 @@ export default function AlertsView({ onBack }) {
         <div className="flex items-center gap-3">
           <button
             onClick={onBack}
-            className="press flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 shadow-xs hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md"
+            className="press flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 shadow-xs hover:-translate-y-0.5 hover:border-line-strong hover:text-plum hover:shadow-md"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Dashboard</span>
           </button>
           <div>
             <h1 className="flex items-center gap-2 text-xl font-black text-slate-900">
-              <span className="anim-blink">🚨 Cold-Chain Alerts &amp; Incident Center</span>
-              <span className="anim-pop rounded-full border border-rose-200 bg-rose-50 px-2.5 py-0.5 text-xs font-bold text-rose-700">
+              Cold-Chain Alerts &amp; Incident Center
+              <span className="anim-pop rounded-full border border-danger-tint bg-danger-tint px-2.5 py-0.5 text-xs font-bold text-danger">
                 2 Active
               </span>
             </h1>
@@ -74,9 +74,9 @@ export default function AlertsView({ onBack }) {
             key={alt.id}
             className={`anim-fade-up hover-lift rounded-2xl border p-5 shadow-xs ${
               alt.severity === 'critical'
-                ? 'anim-glow border-rose-200 bg-white'
+                ? 'anim-glow border-danger-tint bg-paper'
                 : alt.severity === 'warning'
-                ? 'border-amber-200 bg-white'
+                ? 'border-warn-tint bg-paper'
                 : 'border-slate-200 bg-slate-50/60 opacity-80'
             }`}
             style={{ '--d': `${i * 120}ms` }}
@@ -84,18 +84,24 @@ export default function AlertsView({ onBack }) {
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="flex items-start gap-3">
                 <span
-                  className={`anim-bounce-in flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-lg ${
+                  className={`anim-bounce-in flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
                     alt.severity === 'critical'
-                      ? 'bg-rose-100 text-rose-700'
+                      ? 'bg-danger-tint'
                       : alt.severity === 'warning'
-                      ? 'bg-amber-100 text-amber-700'
-                      : 'bg-emerald-100 text-emerald-700'
+                      ? 'bg-warn-tint'
+                      : 'bg-fresh-tint'
                   }`}
                   style={{ '--d': `${i * 120 + 100}ms` }}
                 >
-                  <span className={alt.severity === 'critical' ? 'anim-blink' : ''}>
-                    {alt.severity === 'critical' ? '🔴' : alt.severity === 'warning' ? '🟡' : '🟢'}
-                  </span>
+                  <span
+                    className={`h-3 w-3 rounded-full ${
+                      alt.severity === 'critical'
+                        ? 'anim-blink bg-danger'
+                        : alt.severity === 'warning'
+                        ? 'bg-warn'
+                        : 'bg-fresh'
+                    }`}
+                  />
                 </span>
 
                 <div>
@@ -126,13 +132,13 @@ export default function AlertsView({ onBack }) {
                 {!alt.acknowledged ? (
                   <button
                     onClick={() => handleAcknowledge(alt.id)}
-                    className="press flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-emerald-500 hover:shadow-md"
+                    className="press flex items-center gap-1.5 rounded-lg bg-plum px-3 py-1.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-plum-dark hover:shadow-md"
                   >
                     <CheckCircle className="h-3.5 w-3.5" />
                     <span>Acknowledge</span>
                   </button>
                 ) : (
-                  <span className="anim-pop flex items-center gap-1 text-xs font-bold text-emerald-700">
+                  <span className="anim-pop flex items-center gap-1 text-xs font-bold text-fresh">
                     <CheckCircle className="h-4 w-4" /> Acknowledged
                   </span>
                 )}
