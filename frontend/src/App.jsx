@@ -437,8 +437,8 @@ export default function App() {
         onOpenSidebar={() => setIsSidebarOpen(true)}
         alertsCount={2}
       />
-    </div>
 
+      {/* Modals — rendered inside root div so z-index stacking works correctly on mobile */}
       <BatchQRModal
         batch={currentBatch}
         isOpen={isQRModalOpen}
