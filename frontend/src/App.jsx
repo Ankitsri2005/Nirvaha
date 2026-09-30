@@ -167,9 +167,6 @@ export default function App() {
                   <span className="text-base sm:text-lg font-black tracking-tight text-slate-900 leading-none block">
                     Nirvaha
                   </span>
-                  <p className="hidden text-[10px] font-mono text-slate-500 uppercase tracking-wider sm:block mt-0.5">
-                    Cold-Chain OS
-                  </p>
                 </div>
               </div>
             </div>

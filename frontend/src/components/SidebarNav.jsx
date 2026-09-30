@@ -59,9 +59,6 @@ export default function SidebarNav({
               <span className="text-base font-black tracking-tight text-slate-900 block leading-tight">
                 Nirvaha
               </span>
-              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block">
-                Agri Cold-Chain OS
-              </span>
             </div>
           </div>
 
