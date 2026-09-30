@@ -7,7 +7,8 @@ import {
   PlusCircle,
   User,
   ArrowLeft,
-  LogOut
+  LogOut,
+  Menu
 } from 'lucide-react'
 import { useScrollReveal } from './hooks/useScrollReveal'
 
@@ -15,6 +16,8 @@ import { getStoredBatches } from './data/batches'
 import { readSession, writeSession } from './lib/session'
 import LoginScreen from './components/LoginScreen'
 import TopJourneyBar from './components/TopJourneyBar'
+import SidebarNav from './components/SidebarNav'
+import MobileBottomNav from './components/MobileBottomNav'
 import CurrentShipmentCard from './components/CurrentShipmentCard'
 import ConditionCard from './components/ConditionCard'
 import TemperatureChart from './components/TemperatureChart'
@@ -56,6 +59,7 @@ export default function App() {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false)
   const [isTransporterModalOpen, setIsTransporterModalOpen] = useState(false)
   const [isBuyerModalOpen, setIsBuyerModalOpen] = useState(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   const currentBatch = batches[selectedBatchId] || Object.values(batches)[0]
 
@@ -120,97 +124,141 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans anim-fade-in">
-      <header className="anim-fade-down border-b border-slate-200 bg-white px-3 py-2.5 sm:px-6 sm:py-3">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 sm:gap-4">
-          <div
-            onClick={() => changeView('dashboard')}
-            className="group flex cursor-pointer items-center gap-2 sm:gap-3"
-            title="Go to Home Overview"
-          >
-            <div className="anim-float flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-plum text-white shadow-xs transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shrink-0">
-              <Sprout className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.4]" />
-            </div>
-            <div>
-              <span className="text-base sm:text-lg font-black tracking-tight text-slate-900">Nirvaha</span>
-              <p className="hidden text-[11px] font-medium text-slate-500 sm:block">
-                Farm &rarr; IoT Cold Chain &rarr; Buyer
-              </p>
-            </div>
-          </div>
-
-          <div className="anim-slide-right flex items-center gap-1.5 sm:gap-3 shrink-0" style={{ '--d': '120ms' }}>
-            <div className="hidden items-center gap-2 rounded-xl border border-plum-tint bg-plum-tint px-3 py-1.5 text-xs font-semibold text-plum transition-colors duration-200 hover:border-rose-200 hover:bg-rose-50 md:flex">
-              <User className="h-3.5 w-3.5 text-slate-500" />
-              <span>{currentProfile.name}</span>
-            </div>
-
-            <div className="flex items-center rounded-xl border border-slate-200 bg-white p-1 pl-2 sm:pl-2.5 shadow-xs">
-              <span className="text-xs sm:text-sm anim-float">{currentProfile.icon}</span>
-              <span className="px-1 text-[11px] sm:text-xs font-bold uppercase text-slate-800">
-                {currentProfile.roleLabel}
-              </span>
-              <button
-                onClick={handleLogout}
-                title="Sign out"
-                aria-label="Sign out"
-                className="ml-1 flex cursor-pointer items-center gap-1 rounded-lg border border-line p-1 sm:px-2 sm:py-1 text-xs font-bold text-muted hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700"
-              >
-                <LogOut className="h-3.5 w-3.5" />
-                <span className="hidden md:inline">Sign out</span>
-              </button>
-            </div>
-
-            <button
-              onClick={() => setIsQRModalOpen(true)}
-              className="flex cursor-pointer items-center gap-1 rounded-xl border border-line bg-paper px-2 py-1.5 sm:px-3 text-xs font-bold text-slate-700 shadow-xs hover:-translate-y-0.5 hover:border-line-strong hover:shadow-md"
-              title="Share QR code"
-            >
-              <QrCode className="anim-pulse-dot h-3.5 w-3.5 sm:h-4 sm:w-4 text-plum" />
-              <span className="hidden sm:inline">QR</span>
-            </button>
-
-            {role === 'farmer' && (
-              <button
-                onClick={() => setIsRegisterModalOpen(true)}
-                className="flex cursor-pointer items-center gap-1 rounded-xl bg-plum px-2.5 py-1.5 sm:px-3.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-plum-dark hover:shadow-lg"
-              >
-                <PlusCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                <span>Batch</span>
-              </button>
-            )}
-
-            {role === 'transporter' && (
-              <button
-                onClick={() => setIsTransporterModalOpen(true)}
-                className="flex cursor-pointer items-center gap-1 rounded-xl bg-plum px-2.5 py-1.5 sm:px-3.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-plum-dark hover:shadow-lg"
-              >
-                <Truck className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                <span>Log</span>
-              </button>
-            )}
-
-            {role === 'buyer' && (
-              <button
-                onClick={() => setIsBuyerModalOpen(true)}
-                className="flex cursor-pointer items-center gap-1 rounded-xl bg-plum px-2.5 py-1.5 sm:px-3.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-plum-dark hover:shadow-lg"
-              >
-                <Building2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                <span>Verify</span>
-              </button>
-            )}
-          </div>
-        </div>
-      </header>
-
-      <TopJourneyBar
-        currentStageIndex={currentBatch?.currentStageIndex ?? 4}
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans anim-fade-in flex flex-col">
+      {/* Sidebar Navigation (Desktop permanent + Mobile slide-over drawer) */}
+      <SidebarNav
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
         activeView={activeView}
         onSelectView={changeView}
+        alertsCount={2}
+        batchesCount={Object.keys(batches).length}
+        currentProfile={currentProfile}
+        role={role}
+        onLogout={handleLogout}
+        onOpenQR={() => setIsQRModalOpen(true)}
+        onOpenRoleAction={() => {
+          if (role === 'farmer') setIsRegisterModalOpen(true)
+          if (role === 'transporter') setIsTransporterModalOpen(true)
+          if (role === 'buyer') setIsBuyerModalOpen(true)
+        }}
       />
 
-      <main className="mx-auto max-w-7xl px-3 py-4 sm:px-6 sm:py-6">
-        <div key={activeView} className="view-enter">
+      {/* Main Content Area (Offset by lg:pl-64 on desktop) */}
+      <div className="lg:pl-64 flex flex-col min-h-screen">
+        <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur-md px-3 py-2.5 sm:px-6 sm:py-3">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 sm:gap-4">
+            <div className="flex items-center gap-2.5">
+              {/* Mobile Hamburger Menu Button (Matches user reference) */}
+              <button
+                onClick={() => setIsSidebarOpen(true)}
+                className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 lg:hidden shadow-xs active:scale-95 transition-all"
+                aria-label="Open navigation menu"
+              >
+                <Menu className="h-5 w-5" />
+              </button>
+
+              <div
+                onClick={() => changeView('dashboard')}
+                className="group flex cursor-pointer items-center gap-2 sm:gap-2.5"
+                title="Go to Home Overview"
+              >
+                <div className="anim-float flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-plum text-white shadow-xs transition-transform duration-300 group-hover:scale-105 shrink-0">
+                  <Sprout className="h-4 w-4 sm:h-5 sm:w-5 stroke-[2.4]" />
+                </div>
+                <div>
+                  <span className="text-base sm:text-lg font-black tracking-tight text-slate-900 leading-none block">
+                    Nirvaha
+                  </span>
+                  <p className="hidden text-[10px] font-mono text-slate-500 uppercase tracking-wider sm:block mt-0.5">
+                    Cold-Chain OS
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+              {/* SOS / Alert Pill Badge (Matches reference screenshot style) */}
+              <button
+                onClick={() => changeView('alerts')}
+                className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-rose-600 to-red-600 px-3 py-1 text-xs font-black text-white shadow-sm ring-2 ring-rose-200/80 hover:from-rose-700 hover:to-red-700 active:scale-95 transition-all"
+                title="View Active Cold-Chain Alerts"
+              >
+                <span className="h-2 w-2 rounded-full bg-white animate-pulse"></span>
+                <span>Alerts (2)</span>
+              </button>
+
+              <div className="hidden items-center gap-2 rounded-xl border border-plum-tint bg-plum-tint px-3 py-1.5 text-xs font-semibold text-plum md:flex">
+                <User className="h-3.5 w-3.5 text-slate-500" />
+                <span>{currentProfile.name}</span>
+              </div>
+
+              <div className="hidden sm:flex items-center rounded-xl border border-slate-200 bg-white p-1 pl-2 sm:pl-2.5 shadow-xs">
+                <span className="text-xs sm:text-sm anim-float">{currentProfile.icon}</span>
+                <span className="px-1 text-[11px] sm:text-xs font-bold uppercase text-slate-800">
+                  {currentProfile.roleLabel}
+                </span>
+                <button
+                  onClick={handleLogout}
+                  title="Sign out"
+                  aria-label="Sign out"
+                  className="ml-1 flex cursor-pointer items-center gap-1 rounded-lg border border-line p-1 sm:px-2 sm:py-1 text-xs font-bold text-muted hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700"
+                >
+                  <LogOut className="h-3.5 w-3.5" />
+                  <span className="hidden md:inline">Sign out</span>
+                </button>
+              </div>
+
+              <button
+                onClick={() => setIsQRModalOpen(true)}
+                className="flex cursor-pointer items-center gap-1 rounded-xl border border-line bg-paper px-2 py-1.5 sm:px-3 text-xs font-bold text-slate-700 shadow-xs hover:-translate-y-0.5 hover:border-line-strong hover:shadow-md"
+                title="Share QR code"
+              >
+                <QrCode className="anim-pulse-dot h-3.5 w-3.5 sm:h-4 sm:w-4 text-plum" />
+                <span className="hidden sm:inline">QR</span>
+              </button>
+
+              {role === 'farmer' && (
+                <button
+                  onClick={() => setIsRegisterModalOpen(true)}
+                  className="flex cursor-pointer items-center gap-1 rounded-xl bg-plum px-2.5 py-1.5 sm:px-3.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-plum-dark hover:shadow-lg"
+                >
+                  <PlusCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                  <span className="hidden xs:inline">Batch</span>
+                </button>
+              )}
+
+              {role === 'transporter' && (
+                <button
+                  onClick={() => setIsTransporterModalOpen(true)}
+                  className="flex cursor-pointer items-center gap-1 rounded-xl bg-plum px-2.5 py-1.5 sm:px-3.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-plum-dark hover:shadow-lg"
+                >
+                  <Truck className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                  <span className="hidden xs:inline">Log</span>
+                </button>
+              )}
+
+              {role === 'buyer' && (
+                <button
+                  onClick={() => setIsBuyerModalOpen(true)}
+                  className="flex cursor-pointer items-center gap-1 rounded-xl bg-plum px-2.5 py-1.5 sm:px-3.5 text-xs font-bold text-white shadow-xs hover:-translate-y-0.5 hover:bg-plum-dark hover:shadow-lg"
+                >
+                  <Building2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                  <span className="hidden xs:inline">Verify</span>
+                </button>
+              )}
+            </div>
+          </div>
+        </header>
+
+        <TopJourneyBar
+          currentStageIndex={currentBatch?.currentStageIndex ?? 4}
+          activeView={activeView}
+          onSelectView={changeView}
+        />
+
+        <main className="mx-auto w-full max-w-7xl px-3 py-4 sm:px-6 sm:py-6 pb-24 lg:pb-8 flex-1">
+          <div key={activeView} className="view-enter">
           {activeView === 'hardware' && (
             <IoTHardwareView onBack={() => changeView('dashboard')} />
           )}
@@ -381,6 +429,15 @@ export default function App() {
           )}
         </div>
       </main>
+
+      {/* Mobile Bottom Navigation Bar (Matches user reference) */}
+      <MobileBottomNav
+        activeView={activeView}
+        onSelectView={changeView}
+        onOpenSidebar={() => setIsSidebarOpen(true)}
+        alertsCount={2}
+      />
+    </div>
 
       <BatchQRModal
         batch={currentBatch}
