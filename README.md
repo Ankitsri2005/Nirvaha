@@ -1,4 +1,4 @@
-﻿# 🌿 FoodTrace — Agri Cold-Chain Traceability Platform
+# 🌿 Nirvaha — Agri Cold-Chain Traceability Platform
 
 > **Farm → IoT Cold Chain → Buyer** — every batch of food gets a verifiable digital identity and is monitored continuously from harvest to delivery.
 

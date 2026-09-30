@@ -132,7 +132,7 @@ export default function App() {
               <Sprout className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.4]" />
             </div>
             <div>
-              <span className="text-base sm:text-lg font-black tracking-tight text-slate-900">FoodTrace</span>
+              <span className="text-base sm:text-lg font-black tracking-tight text-slate-900">Nirvaha</span>
               <p className="hidden text-[11px] font-medium text-slate-500 sm:block">
                 Farm &rarr; IoT Cold Chain &rarr; Buyer
               </p>
