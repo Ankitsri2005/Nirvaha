@@ -421,6 +421,7 @@ export default function App() {
         onOpenSidebar={() => setIsSidebarOpen(true)}
         alertsCount={2}
       />
+      </div>{/* end lg:pl-64 inner wrapper */}
 
       {/* Modals — rendered inside root div so z-index stacking works correctly on mobile */}
       <BatchQRModal
@@ -448,6 +449,7 @@ export default function App() {
         batch={currentBatch}
         onUpdate={handleBatchUpdated}
       />
+      {/* end root */}
     </div>
   )
 }
